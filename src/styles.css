@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: max-content; width: 100%;}
+body { 
+    margin: 0; 
+    background: url("https://www.semana.com/resizer/ZRSoVDO5-AOamL9nzA3hWQGhTGo=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/SC6GFRN3LJAXLP6JFV2QOR6S2Y.jpg") center/cover no-repeat; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

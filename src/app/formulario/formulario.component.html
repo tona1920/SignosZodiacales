@@ -1,0 +1,246 @@
+<div class="container body">
+    <div class="row d-flex justify-content-center">
+        <div class=" col-8">
+            <div class="row p-5">
+                <mat-card class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <mat-card-header class="d-flex justify-content-center">
+                        <mat-card-title class="fs-3 fw-bolder text-info p-2 "> Signos Zodiacales</mat-card-title>
+                        
+                    </mat-card-header>
+                    <mat-progress-bar class="p-2" mode="determinate" value="100"></mat-progress-bar>
+                    <mat-card-content class="p-2">
+                        <div class="d-flex justify-content-center">
+                            <mat-card-subtitle class="fs-5 fw-bolder text-info p-2 "> Formulario</mat-card-subtitle>
+                        </div>
+                        
+                        <form [formGroup]="tuFormulario" (ngSubmit)="enviarFormulario()">
+                            <div class="row">
+                                <label class="form-label text-center">Selecciona el mes y dia de nacimiento</label>
+                                <div class="col-6">
+                                    <div class="ms-5 me-5">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Selecciona mes</mat-label>
+                                            <mat-select [(ngModel)]="mesSeleccionado" name="mes" id="mes" formControlName="mes">
+                                                <mat-option *ngFor="let mes of meses" [value]="mes.nombre">{{ mes.nombre }}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="tuFormulario.get('mes').hasError('required') ">
+                                                Debes seleccionar un mes.
+                                            </mat-error>
+                                        </mat-form-field>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="ms-5 me-5">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Selecciona el dia</mat-label>
+                                            <mat-select [(ngModel)]="diaSeleccionado" name="dia" id="dia" formControlName="dia" [disabled]="!mesSeleccionado">
+                                               <mat-option *ngFor="let dia of getDias()" [value]="dia">{{ dia }}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="tuFormulario.get('dia').hasError('required') ">
+                                                Debes seleccionar un día.
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te consideras una persona energética o entusiasta?</mat-label>
+                                    <mat-select  name="energico" id="energico" formControlName="energico">
+                                        <mat-option value="3">Ambas opciones</mat-option>
+                                        <mat-option value="1">Mas energetica que entusiasta</mat-option>
+                                        <mat-option value="2">Mas entusiasta que energetica</mat-option>
+                                        <mat-option value="0">Ninguna de las 2</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('energico').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te gusta explorar y aventurarte en nuevas experiencias?</mat-label>
+                                    <mat-select  name="aventurero" id="aventurero" formControlName="aventurero">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('aventurero').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Valoras tu libertad e independencia?</mat-label>
+                                    <mat-select  name="libre" id="libre" formControlName="libre">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('libre').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te consideras una persona honesta  y/o noble?</mat-label>
+                                    <mat-select  name="noble" id="noble" formControlName="noble">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('noble').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Qué disfrutas más la comodidad o el placer en tu vida diaria?</mat-label>
+                                    <mat-select  name="confort" id="confort" formControlName="confort">
+                                        <mat-option value="3">Ambas Opciones</mat-option>
+                                        <mat-option value="1">Comodidad</mat-option>
+                                        <mat-option value="2">Placer</mat-option>
+                                        <mat-option value="0">Ninguna de las dos</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('confort').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Eres persistente y no te rindes fácilmente?</mat-label>
+                                    <mat-select  name="persistente" id="persistente" formControlName="persistente">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('persistente').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Valoras la lealtad y la protección hacia tus seres queridos?</mat-label>
+                                    <mat-select  name="leal1" id="leal1" formControlName="leal1">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('leal1').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Con cúal de las siguientes opciones te identificas más?</mat-label>
+                                    <mat-select  name="adaptable" id="adaptable" formControlName="adaptable">
+                                        <mat-option value="1">Te adaptas a diversas situaciones</mat-option>
+                                        <mat-option value="2">Te interesas por diferentes temas</mat-option>
+                                        <mat-option value="3">Ambas opciones antes mencionadas</mat-option>
+                                        <mat-option value="0">Ninguna de las opciones antes mencionadas</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('adaptable').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Tienes un enfoque analítico e intelectual?</mat-label>
+                                    <mat-select  name="intelectual" id="intelectual" formControlName="intelectual">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('intelectual').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Eres curioso y versátil en tus intereses?</mat-label>
+                                    <mat-select  name="versatil" id="versatil" formControlName="versatil">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('versatil').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te consideras una persona emocional y empática?</mat-label>
+                                    <mat-select  name="emocional" id="emocional" formControlName="emocional">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('emocional').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te consideras cariñoso y protector con quienes te rodean?</mat-label>
+                                    <mat-select  name="protector" id="protector" formControlName="protector">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('protector').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Te sientes atraído/a por ser el centro de atención o tener carisma?</mat-label>
+                                    <mat-select  name="carismatico" id="carismatico" formControlName="carismatico">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('carismatico').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>¿Tienes ambiciones y deseos de destacar en lo que haces?</mat-label>
+                                    <mat-select  name="ambicioso" id="ambicioso" formControlName="ambicioso">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('ambicioso').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>En tus relaciones ¿te conisderas leal y creativo?</mat-label>
+                                    <mat-select  name="leal2" id="leal2" formControlName="leal2">
+                                        <mat-option value="1">Si</mat-option>
+                                        <mat-option value="0">No</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('leal2').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                           
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-outline-success" [disabled]="tuFormulario.invalid">Enviar</button>
+                            </div>
+                         
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>
