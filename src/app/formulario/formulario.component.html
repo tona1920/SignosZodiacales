@@ -1,6 +1,6 @@
 <div class="container body">
     <div class="row d-flex justify-content-center">
-        <div class=" col-8">
+        <div class=" col-xs-8 col-sm-12 col-md-10 col-lg-8 col-xl-8">
             <div class="row p-5">
                 <mat-card class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <mat-card-header class="d-flex justify-content-center">
@@ -12,11 +12,12 @@
                         <div class="d-flex justify-content-center">
                             <mat-card-subtitle class="fs-5 text text-center fw-bolder text-info p-2 "> ¡Ayúdanos a mapear tu destino astral! </mat-card-subtitle>
                         </div>
-                        <p class="fst-italic text-black-50 ms-5 me-5 p-2">Responde este cuestionario y desentraña las características únicas de tu signo zodiacal. ¡Cada respuesta cuenta para trazar las constelaciones de tu personalidad!</p>
-                        <form [formGroup]="tuFormulario" (ngSubmit)="enviarFormulario()">
-                            <div class="ms-5 me-5">
+                        <p class="fst-italic text-black-50 ms-lg-5 me-lg-5 p-2">Responde este cuestionario y desentraña las características únicas de tu signo zodiacal. ¡Cada respuesta cuenta para trazar las constelaciones de tu personalidad!</p>
+                        <form [formGroup]="tuFormulario" (ngSubmit)="enviarFormulario()" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">1.	¿Cómo describirías tu nivel de energía?</label>
                                 <mat-form-field class="example-full-width"> 
-                                    <mat-label>1.	¿Cómo describirías tu nivel de energía?</mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p1" id="p1" formControlName="p1">
                                         <mat-option value="2">Alto </mat-option>
                                         <mat-option value="1">Medio </mat-option>
@@ -27,9 +28,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">2.	¿Qué actitud tienes hacia las nuevas experiencias?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>2.	¿Qué actitud tienes hacia las nuevas experiencias? </mat-label>
+                                    <mat-label>Selecciona una opción </mat-label>
                                     <mat-select  name="p2" id="p2" formControlName="p2">
                                         <mat-option value="2">Entusiasta, siempre en busca de aventuras. </mat-option>
                                         <mat-option value="1">Abierto, pero prefiero la estabilidad. </mat-option>
@@ -40,9 +42,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">3.	¿Qué cualidad valoras más en la vida? </label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>3.	¿Qué cualidad valoras más en la vida? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p3" id="p3" formControlName="p3">
                                         <mat-option value="2">Libertad personal.</mat-option>
                                         <mat-option value="1">Comodidad y seguridad. </mat-option>
@@ -53,12 +56,15 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">4.	¿Qué te parece más importante en tus relaciones cercanas?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>4.	¿Qué te parece más importante en tus relaciones cercanas? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p4" id="p4" formControlName="p4">
                                         <mat-option value="2">Lealtad y fidelidad. </mat-option>
                                         <mat-option value="1">Empatía y cariño. </mat-option>
+                                        <mat-option value="3">Comunicación abierta y sincera. </mat-option>
+                                        <mat-option value="4">Lealtad y apoyo incondicional. </mat-option>
                                         <mat-option value="0">Carisma y creatividad.</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="tuFormulario.get('p4').hasError('required') ">
@@ -66,9 +72,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
-                                <mat-form-field class="example-full-width"><!-- empática-->
-                                    <mat-label>5.	¿Cómo te consideras en términos de adaptabilidad? </mat-label>
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">5.	¿Cómo te consideras en términos de adaptabilidad? </label>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p5" id="p5" formControlName="p5">
                                         <mat-option value="2">Muy adaptable, me ajusto fácilmente a las circunstancias.</mat-option>
                                         <mat-option value="1">Puedo adaptarme según la situación.</mat-option>
@@ -79,9 +86,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">6.	¿Qué opinas sobre la comunicación y la expresión de ideas?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>6.	¿Qué opinas sobre la comunicación y la expresión de ideas? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p6" id="p6" formControlName="p6">
                                         <mat-option value="2">Me gusta hablar y expresarme abiertamente.</mat-option>
                                         <mat-option value="1">Prefiero escuchar y hablar en momentos necesarios.  </mat-option>
@@ -92,9 +100,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">7.	¿Qué tan curioso/a eres sobre el mundo que te rodea?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>7.	¿Qué tan curioso/a eres sobre el mundo que te rodea? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p7" id="p7" formControlName="p7">
                                         <mat-option value="2">Muy curioso/a, siempre quiero aprender cosas nuevas. </mat-option>
                                         <mat-option value="1">Algo curioso/a, pero solo sobre ciertos temas.</mat-option>
@@ -105,12 +114,15 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">8.	¿Qué cualidad te identifica mejor en tus relaciones personales?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>8.	¿Qué cualidad te identifica mejor en tus relaciones personales? </mat-label>
-                                    <mat-select  name="p8" id="p8" formControlName="p8">
+                                    <mat-label>Selecciona una opción</mat-label>
+                                    <mat-select  name="p8" id="p8" formControlName="p8"> 
                                         <mat-option value="1">Empatía y sensibilidad hacia los demás. </mat-option>
                                         <mat-option value="2">Ambición y determinación en lo que hago. </mat-option>
+                                        <mat-option value="3">Versatilidad en la forma de relacionarse y adaptarse a diferentes personas. </mat-option>
+                                        <mat-option value="4">Intensidad y entusiasmo en cada interacción y compromiso personal.</mat-option>
                                         <mat-option value="0">Lealtad y protección hacia mis seres queridos.</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="tuFormulario.get('p8').hasError('required') ">
@@ -118,9 +130,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">9.	¿Qué tipo de ambiente prefieres para sentirte cómodo/a?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>9.	¿Qué tipo de ambiente prefieres para sentirte cómodo/a? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p9" id="p9" formControlName="p9">
                                         <mat-option value="2">Uno lleno de estímulos y actividades.</mat-option>
                                         <mat-option value="1">Un ambiente tranquilo y relajado.</mat-option>
@@ -131,9 +144,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">10.	¿Cómo sueles manejar tus emociones?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>10.	¿Cómo sueles manejar tus emociones?</mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p10" id="p10" formControlName="p10">
                                         <mat-option value="2">Las expreso abiertamente y las enfrento.</mat-option>
                                         <mat-option value="1">Las gestiono internamente y procuro estar en calma.</mat-option>
@@ -144,10 +158,13 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">11.	¿Qué te parece más atractivo en un compañero/a?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>11.	¿Qué te parece más atractivo en un compañero/a? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p11" id="p11" formControlName="p11">
+                                        <mat-option value="4">Su ingenio y habilidad para mantener conversaciones estimulantes e interesantes.</mat-option>
+                                        <mat-option value="3">Su sensibilidad y capacidad de brindar un apoyo emocional incondicional.</mat-option>
                                         <mat-option value="2">Su creatividad y originalidad.</mat-option>
                                         <mat-option value="1">Su nobleza y sinceridad.</mat-option>
                                         <mat-option value="0">Su forma de apreciar y disfrutar de los placeres simples de la vida</mat-option>
@@ -157,9 +174,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">12.	¿Cómo te sientes frente a situaciones de liderazgo?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>12.	¿Cómo te sientes frente a situaciones de liderazgo?</mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p12" id="p12" formControlName="p12">
                                         <mat-option value="2">Me siento cómodo/a y disfruto asumiendo el control.</mat-option>
                                         <mat-option value="1">Puedo liderar si es necesario, pero no es mi preferencia.</mat-option>
@@ -170,9 +188,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
+                            <div class="ms-lg-5 me-lg-5 ms-xl-5 me-xl-5">
+                                <label class="form-label">13.	¿Cuál es tu enfoque principal cuando enfrentas un desafío?</label>
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>13.	¿Cuál es tu enfoque principal cuando enfrentas un desafío? </mat-label>
+                                    <mat-label>Selecciona una opción</mat-label>
                                     <mat-select  name="p13" id="p13" formControlName="p13">
                                         <mat-option value="2">Perseverar hasta lograr mi objetivo, sin importar cuánto tiempo tome.</mat-option>
                                         <mat-option value="0">Evaluar las opciones con calma y determinar la estrategia más efectiva.</mat-option>

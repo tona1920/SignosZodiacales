@@ -40,10 +40,10 @@ export class FormularioComponent implements OnInit {
       const data = {
         //Aries
         energico : parseInt(this.tuFormulario.get('p1').value),
-        entusismo : this.tuFormulario.get('p2').value=='2'?1:0,
+        entusismo : this.tuFormulario.get('p2').value=='2'?1:0 + this.tuFormulario.get('p8').value=='4'?1:0,
         aventura:  parseInt(this.tuFormulario.get('p2').value),
         libre: this.tuFormulario.get('p3').value=='2'?1:0,
-        noble:this.tuFormulario.get('p11').value=='1'?1:0,
+        noble:this.tuFormulario.get('p11').value=='1'?1:0+this.tuFormulario.get('p4').value=='4'?1:0,
         //Tauro
         confort: this.tuFormulario.get('p2').value=='0'?1:0 ,
         placer:this.tuFormulario.get('p11').value=='0'?1:0,
@@ -52,11 +52,11 @@ export class FormularioComponent implements OnInit {
         //Geminis
         adaptable:parseInt(this.tuFormulario.get('p5').value),
         curioso:parseInt(this.tuFormulario.get('p7').value),
-        intelectual:this.tuFormulario.get('p3').value=='0'?1:0,
-        versatil:parseInt(this.tuFormulario.get('p9').value),
-        comunicativo:parseInt(this.tuFormulario.get('p6').value),
+        intelectual:this.tuFormulario.get('p3').value=='0'?1:0+ this.tuFormulario.get('p11').value=='4'?1:0,
+        versatil:parseInt(this.tuFormulario.get('p9').value)+this.tuFormulario.get('p8').value=='3'?1:0,
+        comunicativo:parseInt(this.tuFormulario.get('p6').value)+this.tuFormulario.get('p4').value=='3'?1:0,
         //Cancer
-        emocional:parseInt(this.tuFormulario.get('p10').value),
+        emocional:parseInt(this.tuFormulario.get('p10').value)+this.tuFormulario.get('p11').value=='3'?1:0,
         empatico:this.tuFormulario.get('p4').value=='1'?1:0 + this.tuFormulario.get('p8').value=='2'?1:0,
         cariñoso:this.tuFormulario.get('p4').value=='1'?1:0,
         protector:this.tuFormulario.get('p8').value=='0'?1:0,
