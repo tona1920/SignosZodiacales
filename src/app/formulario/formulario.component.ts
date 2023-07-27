@@ -14,116 +14,96 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class FormularioComponent implements OnInit {
   tuFormulario: FormGroup;
-  //emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  selected = '';
-  meses: any[] = [
-    { nombre: 'Marzo', dias: 31 },
-    { nombre: 'Abril', dias: 30 },
-    { nombre: 'Mayo', dias: 31 },
-    { nombre: 'Junio', dias: 30 },
-    { nombre: 'Julio', dias: 31 },
-    { nombre: 'Agosto', dias: 22 },
-  ];
-
-  mesSeleccionado: string ;
-  diaSeleccionado: number;
-  dias: number[] = [];
-
-  getDias(): number[] {
-    const mes = this.meses.find(m => m.nombre === this.mesSeleccionado);
-    if (mes) {
-      if (mes.nombre === 'Marzo') {
-        // Agregar los días adicionales después del día 20 para marzo
-        return Array.from({ length: mes.dias - 20 }, (_, i) => i + 21);
-      }
-      return Array.from({ length: mes.dias }, (_, i) => i + 1);
-    }
-    return [];
-  }
-
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,private db: AngularFireDatabase) {}
+  constructor(private formBuilder: FormBuilder, private db: AngularFireDatabase) {}
 
   ngOnInit(): void {
     this.tuFormulario = this.formBuilder.group({
-      mes: ['', Validators.required],
-      dia: ['', Validators.required],
-      //Aries
-      energico: ['', Validators.required],
-      aventurero: ['', Validators.required],
-      libre: ['', Validators.required],
-      noble: ['', Validators.required],
-      //Tauro
-      confort: ['', Validators.required],
-      persistente: ['', Validators.required],
-      leal1:['', Validators.required],
-      //Geminis
-      adaptable:['', Validators.required],
-      intelectual:['', Validators.required],
-      versatil: ['', Validators.required],
-      //Cancer
-      emocional:['', Validators.required],
-      protector:['', Validators.required],
-      //Leo
-      leal2:['', Validators.required],
-      ambicioso:['', Validators.required],
-      carismatico:['', Validators.required],
+      p1: ['', Validators.required],
+      p2: ['', Validators.required],
+      p3: ['', Validators.required],
+      p4: ['', Validators.required],
+      p5: ['', Validators.required],
+      p6: ['', Validators.required],
+      p7:['', Validators.required],
+      p8:['', Validators.required],
+      p9:['', Validators.required],
+      p10: ['', Validators.required],
+      p11:['', Validators.required],
+      p12:['', Validators.required],
+      p13:['', Validators.required]
     });
   }
    // Función para enviar el formulario
   enviarFormulario() {
     if (this.tuFormulario.valid) {
       const data = {
-        mes: parseInt(this.tuFormulario.get('mes').value),
-        dia: parseInt(this.tuFormulario.get('dia').value),
-        energico : this.tuFormulario.get('energico').value=="1" || this.tuFormulario.get('energico').value=="3"?1:0,
-        entusismo : this.tuFormulario.get('energico').value=="2" || this.tuFormulario.get('energico').value=="3"?1:0,
-        aventura: parseInt(this.tuFormulario.get('aventurero').value),
-        libre:parseInt( this.tuFormulario.get('libre').value),
-        noble:parseInt(this.tuFormulario.get('noble').value),
-        confort:this.tuFormulario.get('confort').value=="1" || this.tuFormulario.get('confort').value=="3"?1:0,
-        placer:this.tuFormulario.get('confort').value=="2" || this.tuFormulario.get('confort').value=="3"?1:0,
-        persistencia: parseInt(this.tuFormulario.get('persistente').value),
-        adaptable:this.tuFormulario.get('adaptable').value=="1" || this.tuFormulario.get('adaptable').value=="3"?1:0 ,
-        curioso:this.tuFormulario.get('adaptable').value=="2" || this.tuFormulario.get('adaptable').value=="3"?1:0 + parseInt(this.tuFormulario.get('versatil').value),
-        intelectual:parseInt(this.tuFormulario.get('intelectual').value),
-        versatil:parseInt(this.tuFormulario.get('versatil').value),
-        emocional:parseInt(this.tuFormulario.get('emocional').value),
-        empatico:parseInt(this.tuFormulario.get('emocional').value),
-        cariñoso:parseInt(this.tuFormulario.get('protector').value),
-        protector:parseInt( this.tuFormulario.get('protector').value )+ parseInt(this.tuFormulario.get('leal1').value),
-        carismatico:  parseInt(this.tuFormulario.get('carismatico').value),
-        ambicioso:parseInt(this.tuFormulario.get('ambicioso').value),
-        creativo:parseInt(this.tuFormulario.get('leal2').value),
-        leal: parseInt(this.tuFormulario.get('leal1').value )+ parseInt(this.tuFormulario.get('leal2').value),
+        //Aries
+        energico : parseInt(this.tuFormulario.get('p1').value),
+        entusismo : this.tuFormulario.get('p2').value=='2'?1:0,
+        aventura:  parseInt(this.tuFormulario.get('p2').value),
+        libre: this.tuFormulario.get('p3').value=='2'?1:0,
+        noble:this.tuFormulario.get('p11').value=='1'?1:0,
+        //Tauro
+        confort: this.tuFormulario.get('p2').value=='0'?1:0 ,
+        placer:this.tuFormulario.get('p11').value=='0'?1:0,
+        persistencia: parseInt(this.tuFormulario.get('p13').value),
+        leal: this.tuFormulario.get('p4').value=='2'?1:0,
+        //Geminis
+        adaptable:parseInt(this.tuFormulario.get('p5').value),
+        curioso:parseInt(this.tuFormulario.get('p7').value),
+        intelectual:this.tuFormulario.get('p3').value=='0'?1:0,
+        versatil:parseInt(this.tuFormulario.get('p9').value),
+        comunicativo:parseInt(this.tuFormulario.get('p6').value),
+        //Cancer
+        emocional:parseInt(this.tuFormulario.get('p10').value),
+        empatico:this.tuFormulario.get('p4').value=='1'?1:0 + this.tuFormulario.get('p8').value=='2'?1:0,
+        cariñoso:this.tuFormulario.get('p4').value=='1'?1:0,
+        protector:this.tuFormulario.get('p8').value=='0'?1:0,
+        //Leo
+        carismatico: this.tuFormulario.get('p4').value=='0'?1:0,
+        ambicioso:this.tuFormulario.get('p8').value=='1'?1:0,
+        creativo:this.tuFormulario.get('p4').value=='0'?1:0 + this.tuFormulario.get('p11').value=='2'?1:0,
+        dominante:parseInt(this.tuFormulario.get('p12').value), 
       };
 
 
 
       console.log(data);
-
-      // this.db.list('/respuestas').push(data)
-      // .then(() => {
-      //   console.log('Datos guardados correctamente en Firebase.');
-      //   Swal.fire({
-      //     position: 'top-end',
-      //     icon: 'success',
-      //     title: 'Datos guardados correctamente',
-      //     showConfirmButton: false,
-      //     timer: 1500
-      //   });
-      //   this.tuFormulario.reset();
-      // })
-      // .catch(error => {
-      //   Swal.fire({
-      //     position: 'top-end',
-      //     icon: 'error',
-      //     title: 'Error al guardar datos en Firebase',
-      //     showConfirmButton: false,
-      //     timer: 1500
-      //   })
-      //   console.error('Error al guardar datos en Firebase:', error);
-      // });
+      Swal.fire({
+        title: 'Deseas enviar tus respuestas?',
+        showCancelButton: true,
+        confirmButtonText: 'Enviar',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.db.list('/respuestas').push(data)
+            .then(() => {
+              console.log('Datos guardados correctamente en Firebase.');
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Datos guardados correctamente',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.tuFormulario.reset();
+            })
+            .catch(error => {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error al guardar datos en Firebase',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              console.error('Error al guardar datos en Firebase:', error);
+            });
+        } else if (result.isDenied) {
+          Swal.fire('Formulario no enviado', '', 'info')
+        }
+      });
+      
     }
   }
 

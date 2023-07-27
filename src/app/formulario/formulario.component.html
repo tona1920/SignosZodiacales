@@ -4,234 +4,184 @@
             <div class="row p-5">
                 <mat-card class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <mat-card-header class="d-flex justify-content-center">
-                        <mat-card-title class="fs-3 fw-bolder text-info p-2 "> Signos Zodiacales</mat-card-title>
+                        <mat-card-title class="fs-3 fw-bolder text-primary p-2 "> Astroencuesta: Descubre las Estrellas que te Guían </mat-card-title>
                         
                     </mat-card-header>
                     <mat-progress-bar class="p-2" mode="determinate" value="100"></mat-progress-bar>
                     <mat-card-content class="p-2">
                         <div class="d-flex justify-content-center">
-                            <mat-card-subtitle class="fs-5 fw-bolder text-info p-2 "> Formulario</mat-card-subtitle>
+                            <mat-card-subtitle class="fs-5 text text-center fw-bolder text-info p-2 "> ¡Ayúdanos a mapear tu destino astral! </mat-card-subtitle>
                         </div>
-                        
+                        <p class="fst-italic text-black-50 ms-5 me-5 p-2">Responde este cuestionario y desentraña las características únicas de tu signo zodiacal. ¡Cada respuesta cuenta para trazar las constelaciones de tu personalidad!</p>
                         <form [formGroup]="tuFormulario" (ngSubmit)="enviarFormulario()">
-                            <div class="row">
-                                <label class="form-label text-center">Selecciona el mes y dia de nacimiento</label>
-                                <div class="col-6">
-                                    <div class="ms-5 me-5">
-                                        <mat-form-field class="example-full-width">
-                                            <mat-label>Selecciona mes</mat-label>
-                                            <mat-select [(ngModel)]="mesSeleccionado" name="mes" id="mes" formControlName="mes">
-                                                <mat-option *ngFor="let mes of meses" [value]="mes.nombre">{{ mes.nombre }}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="tuFormulario.get('mes').hasError('required') ">
-                                                Debes seleccionar un mes.
-                                            </mat-error>
-                                        </mat-form-field>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="ms-5 me-5">
-                                        <mat-form-field class="example-full-width">
-                                            <mat-label>Selecciona el dia</mat-label>
-                                            <mat-select [(ngModel)]="diaSeleccionado" name="dia" id="dia" formControlName="dia" [disabled]="!mesSeleccionado">
-                                               <mat-option *ngFor="let dia of getDias()" [value]="dia">{{ dia }}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="tuFormulario.get('dia').hasError('required') ">
-                                                Debes seleccionar un día.
-                                            </mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                
-                            </div>
                             <div class="ms-5 me-5">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te consideras una persona energética o entusiasta?</mat-label>
-                                    <mat-select  name="energico" id="energico" formControlName="energico">
-                                        <mat-option value="3">Ambas opciones</mat-option>
-                                        <mat-option value="1">Mas energetica que entusiasta</mat-option>
-                                        <mat-option value="2">Mas entusiasta que energetica</mat-option>
-                                        <mat-option value="0">Ninguna de las 2</mat-option>
+                                <mat-form-field class="example-full-width"> 
+                                    <mat-label>1.	¿Cómo describirías tu nivel de energía?</mat-label>
+                                    <mat-select  name="p1" id="p1" formControlName="p1">
+                                        <mat-option value="2">Alto </mat-option>
+                                        <mat-option value="1">Medio </mat-option>
+                                        <mat-option value="0">Bajo</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('energico').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p1').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te gusta explorar y aventurarte en nuevas experiencias?</mat-label>
-                                    <mat-select  name="aventurero" id="aventurero" formControlName="aventurero">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>2.	¿Qué actitud tienes hacia las nuevas experiencias? </mat-label>
+                                    <mat-select  name="p2" id="p2" formControlName="p2">
+                                        <mat-option value="2">Entusiasta, siempre en busca de aventuras. </mat-option>
+                                        <mat-option value="1">Abierto, pero prefiero la estabilidad. </mat-option>
+                                        <mat-option value="0">No me gustan mucho los cambios, prefiero la rutina.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('aventurero').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p2').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Valoras tu libertad e independencia?</mat-label>
-                                    <mat-select  name="libre" id="libre" formControlName="libre">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>3.	¿Qué cualidad valoras más en la vida? </mat-label>
+                                    <mat-select  name="p3" id="p3" formControlName="p3">
+                                        <mat-option value="2">Libertad personal.</mat-option>
+                                        <mat-option value="1">Comodidad y seguridad. </mat-option>
+                                        <mat-option value="0">Conocimiento y aprendizaje.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('libre').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p3').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te consideras una persona honesta  y/o noble?</mat-label>
-                                    <mat-select  name="noble" id="noble" formControlName="noble">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>4.	¿Qué te parece más importante en tus relaciones cercanas? </mat-label>
+                                    <mat-select  name="p4" id="p4" formControlName="p4">
+                                        <mat-option value="2">Lealtad y fidelidad. </mat-option>
+                                        <mat-option value="1">Empatía y cariño. </mat-option>
+                                        <mat-option value="0">Carisma y creatividad.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('noble').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p4').hasError('required') ">
+                                        Debes seleccionar una opción.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="ms-5 me-5">
+                                <mat-form-field class="example-full-width"><!-- empática-->
+                                    <mat-label>5.	¿Cómo te consideras en términos de adaptabilidad? </mat-label>
+                                    <mat-select  name="p5" id="p5" formControlName="p5">
+                                        <mat-option value="2">Muy adaptable, me ajusto fácilmente a las circunstancias.</mat-option>
+                                        <mat-option value="1">Puedo adaptarme según la situación.</mat-option>
+                                        <mat-option value="0">No soy muy flexible, me cuesta adaptarme a cambios.</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="tuFormulario.get('p5').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Qué disfrutas más la comodidad o el placer en tu vida diaria?</mat-label>
-                                    <mat-select  name="confort" id="confort" formControlName="confort">
-                                        <mat-option value="3">Ambas Opciones</mat-option>
-                                        <mat-option value="1">Comodidad</mat-option>
-                                        <mat-option value="2">Placer</mat-option>
-                                        <mat-option value="0">Ninguna de las dos</mat-option>
+                                    <mat-label>6.	¿Qué opinas sobre la comunicación y la expresión de ideas? </mat-label>
+                                    <mat-select  name="p6" id="p6" formControlName="p6">
+                                        <mat-option value="2">Me gusta hablar y expresarme abiertamente.</mat-option>
+                                        <mat-option value="1">Prefiero escuchar y hablar en momentos necesarios.  </mat-option>
+                                        <mat-option value="0">No me siento cómodo/a comunicándome constantemente.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('confort').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p6').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Eres persistente y no te rindes fácilmente?</mat-label>
-                                    <mat-select  name="persistente" id="persistente" formControlName="persistente">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>7.	¿Qué tan curioso/a eres sobre el mundo que te rodea? </mat-label>
+                                    <mat-select  name="p7" id="p7" formControlName="p7">
+                                        <mat-option value="2">Muy curioso/a, siempre quiero aprender cosas nuevas. </mat-option>
+                                        <mat-option value="1">Algo curioso/a, pero solo sobre ciertos temas.</mat-option>
+                                        <mat-option value="0">No siento una gran curiosidad, me conformo con lo que sé.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('persistente').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p7').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Valoras la lealtad y la protección hacia tus seres queridos?</mat-label>
-                                    <mat-select  name="leal1" id="leal1" formControlName="leal1">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>8.	¿Qué cualidad te identifica mejor en tus relaciones personales? </mat-label>
+                                    <mat-select  name="p8" id="p8" formControlName="p8">
+                                        <mat-option value="1">Empatía y sensibilidad hacia los demás. </mat-option>
+                                        <mat-option value="2">Ambición y determinación en lo que hago. </mat-option>
+                                        <mat-option value="0">Lealtad y protección hacia mis seres queridos.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('leal1').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p8').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Con cúal de las siguientes opciones te identificas más?</mat-label>
-                                    <mat-select  name="adaptable" id="adaptable" formControlName="adaptable">
-                                        <mat-option value="1">Te adaptas a diversas situaciones</mat-option>
-                                        <mat-option value="2">Te interesas por diferentes temas</mat-option>
-                                        <mat-option value="3">Ambas opciones antes mencionadas</mat-option>
-                                        <mat-option value="0">Ninguna de las opciones antes mencionadas</mat-option>
+                                    <mat-label>9.	¿Qué tipo de ambiente prefieres para sentirte cómodo/a? </mat-label>
+                                    <mat-select  name="p9" id="p9" formControlName="p9">
+                                        <mat-option value="2">Uno lleno de estímulos y actividades.</mat-option>
+                                        <mat-option value="1">Un ambiente tranquilo y relajado.</mat-option>
+                                        <mat-option value="0">Un espacio intelectualmente estimulante.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('adaptable').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p9').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Tienes un enfoque analítico e intelectual?</mat-label>
-                                    <mat-select  name="intelectual" id="intelectual" formControlName="intelectual">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>10.	¿Cómo sueles manejar tus emociones?</mat-label>
+                                    <mat-select  name="p10" id="p10" formControlName="p10">
+                                        <mat-option value="2">Las expreso abiertamente y las enfrento.</mat-option>
+                                        <mat-option value="1">Las gestiono internamente y procuro estar en calma.</mat-option>
+                                        <mat-option value="0">No suelo expresarlas mucho, las guardo para mí.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('intelectual').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p10').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Eres curioso y versátil en tus intereses?</mat-label>
-                                    <mat-select  name="versatil" id="versatil" formControlName="versatil">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>11.	¿Qué te parece más atractivo en un compañero/a? </mat-label>
+                                    <mat-select  name="p11" id="p11" formControlName="p11">
+                                        <mat-option value="2">Su creatividad y originalidad.</mat-option>
+                                        <mat-option value="1">Su nobleza y sinceridad.</mat-option>
+                                        <mat-option value="0">Su forma de apreciar y disfrutar de los placeres simples de la vida</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('versatil').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p11').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te consideras una persona emocional y empática?</mat-label>
-                                    <mat-select  name="emocional" id="emocional" formControlName="emocional">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>12.	¿Cómo te sientes frente a situaciones de liderazgo?</mat-label>
+                                    <mat-select  name="p12" id="p12" formControlName="p12">
+                                        <mat-option value="2">Me siento cómodo/a y disfruto asumiendo el control.</mat-option>
+                                        <mat-option value="1">Puedo liderar si es necesario, pero no es mi preferencia.</mat-option>
+                                        <mat-option value="0">No me gusta liderar, prefiero seguir a otros.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('emocional').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p12').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="ms-5 me-5">
                                 <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te consideras cariñoso y protector con quienes te rodean?</mat-label>
-                                    <mat-select  name="protector" id="protector" formControlName="protector">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
+                                    <mat-label>13.	¿Cuál es tu enfoque principal cuando enfrentas un desafío? </mat-label>
+                                    <mat-select  name="p13" id="p13" formControlName="p13">
+                                        <mat-option value="2">Perseverar hasta lograr mi objetivo, sin importar cuánto tiempo tome.</mat-option>
+                                        <mat-option value="0">Evaluar las opciones con calma y determinar la estrategia más efectiva.</mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('protector').hasError('required') ">
+                                    <mat-error *ngIf="tuFormulario.get('p13').hasError('required') ">
                                         Debes seleccionar una opción.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <div class="ms-5 me-5">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>¿Te sientes atraído/a por ser el centro de atención o tener carisma?</mat-label>
-                                    <mat-select  name="carismatico" id="carismatico" formControlName="carismatico">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('carismatico').hasError('required') ">
-                                        Debes seleccionar una opción.
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="ms-5 me-5">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>¿Tienes ambiciones y deseos de destacar en lo que haces?</mat-label>
-                                    <mat-select  name="ambicioso" id="ambicioso" formControlName="ambicioso">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('ambicioso').hasError('required') ">
-                                        Debes seleccionar una opción.
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="ms-5 me-5">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>En tus relaciones ¿te conisderas leal y creativo?</mat-label>
-                                    <mat-select  name="leal2" id="leal2" formControlName="leal2">
-                                        <mat-option value="1">Si</mat-option>
-                                        <mat-option value="0">No</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="tuFormulario.get('leal2').hasError('required') ">
-                                        Debes seleccionar una opción.
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                           
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-outline-success" [disabled]="tuFormulario.invalid">Enviar</button>
                             </div>
